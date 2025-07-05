@@ -12,5 +12,6 @@ export interface UseTaskStateState {
 
   addTask: VoidFunction
   deleteTask: (taskId: number) => void 
-  completeTask: (taskId: number) => void
+  toggleTask: (taskId: number) => void
+  editTask: (taskId: number, field: string, value: string) => void
 }
