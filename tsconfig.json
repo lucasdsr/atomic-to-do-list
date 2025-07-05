@@ -14,9 +14,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx", // <-- ESSENCIAL para React 17+
+    "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./src/*"] // Exemplo de alias de caminho (opcional)
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],
