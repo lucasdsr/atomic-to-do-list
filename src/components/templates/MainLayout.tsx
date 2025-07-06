@@ -1,9 +1,7 @@
-import { TasksProvider } from '@/contexts/tasks'
-import { Container } from '@mui/material'
 import { PropsWithChildren } from 'react'
 
+import * as S from './styles'
+
 export const MainLayout = ({ children }: PropsWithChildren) => (
-  <TasksProvider>
-    <Container>{children}</Container>
-  </TasksProvider>
+  <S.Layout>{children}</S.Layout>
 )

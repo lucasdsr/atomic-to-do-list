@@ -1,15 +1,19 @@
 import { useState } from 'react'
 
-import { Box, TextField } from '@mui/material'
+import * as S from './styles'
+import { Typography, useTheme } from '@mui/material'
 
 type InputType = {
   value?: string
+  placeholder?: string
   onChange: (value: string) => void
 }
 
-export const Input = ({ value = '', onChange }: InputType) => {
+export const Input = ({ value = '', onChange, placeholder }: InputType) => {
   const [isEditing, setIsEditing] = useState(false)
   const [editedValue, setEditedValue] = useState(value)
+
+  const theme = useTheme()
 
   const handleEditChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,28 +29,26 @@ export const Input = ({ value = '', onChange }: InputType) => {
   }
 
   return (
-    <Box>
+    <S.InputContainer onBlur={() => console.log('blured')}>
       {isEditing ? (
-        <TextField
+        <S.InputField
+          autoFocus
           variant='standard'
           value={editedValue}
           onBlur={handleEditBlur}
           onChange={handleEditChange}
         />
       ) : (
-        <Box
-          onClick={() => setIsEditing(true)}
-          sx={{
-            display: 'flex',
-            height: '20px',
-            width: '100px',
-            backgroundColor: 'white',
-            color: 'black'
-          }}
-        >
-          {value}
-        </Box>
+        <S.InputBox onBlur={handleEditBlur} onClick={() => setIsEditing(true)}>
+          {value ? (
+            <Typography color={theme.palette.grey[300]}>{value}</Typography>
+          ) : (
+            <Typography color={theme.palette.grey[600]}>
+              {placeholder}
+            </Typography>
+          )}
+        </S.InputBox>
       )}
-    </Box>
+    </S.InputContainer>
   )
 }
