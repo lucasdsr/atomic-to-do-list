@@ -9,16 +9,20 @@ export const AddButton = styled(Button)`
   background-color: ${({ theme }) => theme.palette.primary.main}
 `
 
-export const TaskListContainer = styled(Paper)`
-  gap: 24px;
-  padding: 24px;
-  display: flex;
-  min-width: 554px;
-  padding-right: 12px;
-  flex-direction: column;
-  align-items: center;
-  color: ${({ theme }) => theme.palette.secondary.main}
-`
+export const TaskListContainer = styled(Paper)(({ theme }) => ({
+  gap: '24px',
+  padding: '24px',
+  display: 'flex',
+  width: '554px',
+  paddingRight: '12px',
+  flexDirection: 'column',
+  alignItems: 'center',
+  color: theme.palette.secondary.main,
+
+  [theme.breakpoints.down('sm')]: {
+    width: '80vw',
+  }
+}))
 
 export const TasksContainer = styled(Box)`
   max-height: 75vh;

@@ -2,7 +2,7 @@ import { Box, Paper, PaperProps, styled } from "@mui/material";
 
 import CloseIcon from '@mui/icons-material/Close'
 
-export const TaskItemContainer = styled(Paper)<PaperProps & { isVisible: boolean }>(({ isVisible }) => ({
+export const TaskItemContainer = styled(Paper)<PaperProps & { isVisible: boolean }>(({ theme, isVisible }) => ({
   minHeight: '76px',
   padding: '12px',
   gap: '8px',
@@ -15,9 +15,14 @@ export const TaskItemContainer = styled(Paper)<PaperProps & { isVisible: boolean
   opacity: 1,
   transition: 'opacity 0.5s ease-out',
 
+  [theme.breakpoints.down('sm')]: {
+    width: '80vw',
+  },
+
   ...(!isVisible && {
     opacity: 0
   })
+  
 }))
 
 export const Close = styled(CloseIcon)`

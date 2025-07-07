@@ -1,9 +1,13 @@
 import { Box, Container, styled, TextField, Typography } from "@mui/material";
 
-export const InputContainer = styled(Container)`
-  width: 437px;
-  padding: 0px 8px !important;
-`
+export const InputContainer = styled(Container)(({ theme }) => ({
+  width: '437px',
+  padding: '0px 8px !important',
+
+  [theme.breakpoints.down('sm')]: {
+    width: '55vw',
+  },
+}))
 
 export const InputField = styled(TextField)`
   width: 100%;
@@ -17,7 +21,13 @@ export const InputBox = styled(Box)`
   height: 32px;
 `
 
-export const InputText = styled(Typography)`
-  font-size: 14px;
-  font-weight: 600;
-`
+export const InputText = styled(Typography)(({ theme }) => ({
+  maxWidth: '420px',
+  fontSize: '14px',
+  fontWeight: '600',
+  overflowX: 'hidden',
+
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '55vw',
+  },
+}))
