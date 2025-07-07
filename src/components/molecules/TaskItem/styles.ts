@@ -23,4 +23,4 @@ export const InputRow = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  `
+`

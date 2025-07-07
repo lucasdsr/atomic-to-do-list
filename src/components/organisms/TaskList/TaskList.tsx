@@ -12,11 +12,13 @@ const TaskList: React.FC = () => {
   const { tasksList, addTask } = useTaskContext()
   return (
     <S.TaskListContainer elevation={6}>
-      <h2>Minhas Tarefas</h2>
-      <Button onClick={addTask}>Adicionar tarefa</Button>
+      <S.Title variant='h4'>My Tasks</S.Title>
+      <S.AddButton variant='contained' onClick={addTask}>
+        Add task
+      </S.AddButton>
 
       {tasksList.length === 0 ? (
-        <p>Nenhuma tarefa adicionada ainda!</p>
+        <p>No task added</p>
       ) : (
         <S.BoxList>
           {tasksList.map(task => (

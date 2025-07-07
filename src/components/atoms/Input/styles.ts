@@ -1,7 +1,7 @@
 import { Box, Container, styled, TextField } from "@mui/material";
 
 export const InputContainer = styled(Container)`
-  width: 450px;
+  width: 437px;
   padding: 0px 8px !important;
 `
 
