@@ -8,9 +8,9 @@ export const TaskItemContainer = styled(Paper)`
   gap: 8px;
   display: flex;
   alignItems: 'center';
-  justify-content: space-between;
   margin-right: 12px;
   background-color: inherit;
+  justify-content: space-between;
 `
 
 export const Close = styled(CloseIcon)`

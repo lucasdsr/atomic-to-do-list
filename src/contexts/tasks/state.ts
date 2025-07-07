@@ -1,40 +1,48 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 import { emptyTask, LOCAL_STORAGE_LISTS_KEY } from "./consts"
-import { TasksList, UseTaskStateState } from "./interface"
+import { TasksList, UseTaskState } from "./interface"
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/manageLocalStorage"
 
-export const useTaskState = (): UseTaskStateState => {
+export const useTaskState = (): UseTaskState => {
   const storagedList = getFromLocalStorage<TasksList>(LOCAL_STORAGE_LISTS_KEY) || []
-  const [tasksList, setTasksList] = useState<TasksList>(storagedList)
-  const [nextTaskId, setNextTaskId] = useState<number>(tasksList?.length + 1)
+  const [allTasks, setAllTasks] = useState<TasksList>(storagedList)
+  const [nextTaskId, setNextTaskId] = useState<number>(allTasks.length + 1)
+
+  const { tasksList, completedTasks } = useMemo(() =>
+    allTasks.reduce((acc, task) => {
+      if (task.completed) return { ...acc, completedTasks: [ ...acc.completedTasks, task ] }
+      return { ...acc, tasksList: [ ...acc.tasksList, task ] }
+    }, { tasksList: [] as TasksList, completedTasks: [] as TasksList })
+  , [allTasks])
 
   const addTask = () => {
-    setTasksList(curr => [...curr, { ...emptyTask, id: nextTaskId }])
+    setAllTasks(curr => [...curr, { ...emptyTask, id: nextTaskId }])
     setNextTaskId(id => id + 1)
   }
 
   const editTask = (id: number, field: string, value: string) => {
-    setTasksList((curr) => {
+    setAllTasks((curr) => {
       const updatedList = curr.map((task) => (task.id === id ? { ...task, [field]: value } : task))
       saveToLocalStorage(LOCAL_STORAGE_LISTS_KEY, updatedList)
       return updatedList
     });
   };
 
-  const deleteTask = (taskId: number) => setTasksList(curr => curr.filter(({ id }) => id !== taskId))
+  const deleteTask = (taskId: number) => setAllTasks(curr => curr.filter(({ id }) => id !== taskId))
 
-  const toggleTask = (taskId: number) => setTasksList(curr => curr.reduce((acc, item) => {
+  const toggleTask = (taskId: number) => setAllTasks(curr => curr.reduce((acc, item) => {
     if (item.id === taskId) return  [ ...acc, { ...item, completed: !item.completed } ]
     return [ ...acc, item  ]
   }, [] as TasksList))
 
   useEffect(() => {
-    saveToLocalStorage(LOCAL_STORAGE_LISTS_KEY, tasksList)
-  }, [tasksList])
+    saveToLocalStorage(LOCAL_STORAGE_LISTS_KEY, allTasks)
+  }, [allTasks])
 
   return {
     tasksList,
+    completedTasks,
 
     addTask,
     editTask,

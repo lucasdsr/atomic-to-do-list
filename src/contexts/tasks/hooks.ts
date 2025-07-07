@@ -1,9 +1,9 @@
 import { useContext } from "react"
 
 import { Context } from "./component"
-import { UseTaskStateState } from "./interface"
+import { UseTaskState } from "./interface"
 
-export const useTaskContext = (): UseTaskStateState => {
+export const useTaskContext = (): UseTaskState => {
   const value = useContext(Context)
   
   if (!value) throw new Error('useTaskContext must be used insided TaskProvider')

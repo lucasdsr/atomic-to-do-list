@@ -19,13 +19,18 @@ export const TaskListContainer = styled(Paper)`
   align-items: center;
   color: ${({ theme }) => theme.palette.secondary.main}
 `
-  
-export const BoxList = styled(Box)`
+
+export const TasksContainer = styled(Box)`
+  max-height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 75vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 `
+
+export const BoxList = styled(Box)({
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+})

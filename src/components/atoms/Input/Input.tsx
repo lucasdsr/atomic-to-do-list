@@ -29,11 +29,15 @@ export const Input = ({ value = '', onChange, placeholder }: InputType) => {
   }
 
   return (
-    <S.InputContainer onBlur={() => console.log('blured')}>
+    <S.InputContainer>
       {isEditing ? (
         <S.InputField
           autoFocus
           variant='standard'
+          sx={{
+            '--Input-fontSize': '14px',
+            '--Input-fontWeight': '600'
+          }}
           value={editedValue}
           onBlur={handleEditBlur}
           onChange={handleEditChange}
@@ -41,11 +45,11 @@ export const Input = ({ value = '', onChange, placeholder }: InputType) => {
       ) : (
         <S.InputBox onBlur={handleEditBlur} onClick={() => setIsEditing(true)}>
           {value ? (
-            <Typography color={theme.palette.grey[300]}>{value}</Typography>
+            <S.InputText color={theme.palette.grey[300]}>{value}</S.InputText>
           ) : (
-            <Typography color={theme.palette.grey[600]}>
+            <S.InputText color={theme.palette.grey[600]}>
               {placeholder}
-            </Typography>
+            </S.InputText>
           )}
         </S.InputBox>
       )}

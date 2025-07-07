@@ -1,12 +1,26 @@
 import React from 'react'
 
-import { Box, Button } from '@mui/material'
-
-import { useTaskContext } from '@/contexts/tasks'
+import { TasksList, useTaskContext } from '@/contexts/tasks'
 
 import TaskItem from '@/components/molecules/TaskItem/TaskItem'
 
+import CompletedTasksList from '../CompletedTasksList/CompletedTasksList'
+
 import * as S from './styles'
+
+const UncompletedTasksList = ({ tasksList }: { tasksList: TasksList }) => (
+  <>
+    {tasksList.length === 0 ? (
+      <p>No task added</p>
+    ) : (
+      <S.BoxList>
+        {tasksList.map(task => (
+          <TaskItem task={task} key={task.id} />
+        ))}
+      </S.BoxList>
+    )}
+  </>
+)
 
 const TaskList: React.FC = () => {
   const { tasksList, addTask } = useTaskContext()
@@ -17,15 +31,10 @@ const TaskList: React.FC = () => {
         Add task
       </S.AddButton>
 
-      {tasksList.length === 0 ? (
-        <p>No task added</p>
-      ) : (
-        <S.BoxList>
-          {tasksList.map(task => (
-            <TaskItem task={task} key={task.id} />
-          ))}
-        </S.BoxList>
-      )}
+      <S.TasksContainer>
+        <UncompletedTasksList tasksList={tasksList} />
+        <CompletedTasksList />
+      </S.TasksContainer>
     </S.TaskListContainer>
   )
 }

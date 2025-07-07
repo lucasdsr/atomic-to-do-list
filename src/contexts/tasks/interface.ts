@@ -7,8 +7,9 @@ export type Task = {
 
 export type TasksList = Task[]
 
-export interface UseTaskStateState {
+export interface UseTaskState {
   tasksList: TasksList
+  completedTasks: TasksList
 
   addTask: VoidFunction
   deleteTask: (taskId: number) => void 

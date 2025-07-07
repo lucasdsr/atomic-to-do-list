@@ -3,9 +3,9 @@ import React, { createContext, PropsWithChildren } from 'react'
 import { useTaskState } from './state'
 
 import { contextDefaultValue } from './consts'
-import { UseTaskStateState } from './interface'
+import { UseTaskState } from './interface'
 
-export const Context = createContext<UseTaskStateState | null>(null)
+export const Context = createContext<UseTaskState | null>(null)
 
 export const TasksProvider = ({ children }: PropsWithChildren) => {
   const tasksState = useTaskState()

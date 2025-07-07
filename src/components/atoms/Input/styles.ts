@@ -1,4 +1,4 @@
-import { Box, Container, styled, TextField } from "@mui/material";
+import { Box, Container, styled, TextField, Typography } from "@mui/material";
 
 export const InputContainer = styled(Container)`
   width: 437px;
@@ -15,4 +15,9 @@ export const InputBox = styled(Box)`
   display: flex;
   width: 100%;
   height: 32px;
+`
+
+export const InputText = styled(Typography)`
+  font-size: 14px;
+  font-weight: 600;
 `
