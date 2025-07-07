@@ -1,6 +1,7 @@
 import { Box, Button, Paper, styled, Typography } from "@mui/material";
 
 export const Title = styled(Typography)`
+  font-weight: 700;
   color: white
 `
 
