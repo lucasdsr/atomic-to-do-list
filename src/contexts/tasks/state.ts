@@ -36,6 +36,9 @@ export const useTaskState = (): UseTaskState => {
     return [ ...acc, item  ]
   }, [] as TasksList))
 
+  const clearConfirmedTasks = () =>
+    setAllTasks(curr => curr.filter((item) => !item.completed))
+
   useEffect(() => {
     saveToLocalStorage(LOCAL_STORAGE_LISTS_KEY, allTasks)
   }, [allTasks])
@@ -48,5 +51,6 @@ export const useTaskState = (): UseTaskState => {
     editTask,
     deleteTask,
     toggleTask,
+    clearConfirmedTasks
   }
 }

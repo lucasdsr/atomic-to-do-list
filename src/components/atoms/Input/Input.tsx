@@ -35,8 +35,10 @@ export const Input = ({ value = '', onChange, placeholder }: InputType) => {
           autoFocus
           variant='standard'
           sx={{
-            '--Input-fontSize': '14px',
-            '--Input-fontWeight': '600'
+            '& .MuiInputBase-input': {
+              fontSize: '14px',
+              fontWeight: '600'
+            }
           }}
           value={editedValue}
           onBlur={handleEditBlur}

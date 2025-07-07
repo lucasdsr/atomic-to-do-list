@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 
 export const CompletedContainer = styled(Box)`
   display: flex;
@@ -26,4 +26,11 @@ export const BoxList = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  align-items: end;
+`
+
+export const ClearButton = styled(Button)`
+  margin-right: 12px;
+  max-width: 200px;
+  font-weight: 600;
 `

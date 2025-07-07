@@ -6,9 +6,14 @@ import { Input } from '@/components/atoms'
 import { Task, useTaskContext } from '@/contexts/tasks'
 
 import * as S from './styles'
+import CompletedTasksList from '@/components/organisms/CompletedTasksList/CompletedTasksList'
 
-const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
+const TaskItem: React.FC<{ task: Task; isVisible?: boolean }> = ({
+  task,
+  isVisible: isVisibleOutside = true
+}) => {
   const [title, setTitle] = useState(task.title)
+  const [isVisible, setIsVisible] = useState(true)
   const [description, setDescription] = useState(task.description)
 
   const { toggleTask, deleteTask, editTask } = useTaskContext()
@@ -23,8 +28,17 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
     editTask(task.id, 'description', value)
   }
 
+  const handleDelete = () => {
+    setIsVisible(false)
+
+    setTimeout(() => deleteTask(task.id), 500)
+  }
+
   return (
-    <S.TaskItemContainer elevation={2}>
+    <S.TaskItemContainer
+      isVisible={isVisible && isVisibleOutside}
+      elevation={2}
+    >
       <Checkbox
         id={task.id.toString()}
         checked={task.completed}
@@ -38,7 +52,7 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
           onChange={handleDescriptionChange}
         />
       </S.InputRow>
-      <S.Close onClick={() => deleteTask(task.id)} />
+      <S.Close onClick={handleDelete} />
     </S.TaskItemContainer>
   )
 }

@@ -12,6 +12,7 @@ export interface UseTaskState {
   completedTasks: TasksList
 
   addTask: VoidFunction
+  clearConfirmedTasks: VoidFunction
   deleteTask: (taskId: number) => void 
   toggleTask: (taskId: number) => void
   editTask: (taskId: number, field: string, value: string) => void
