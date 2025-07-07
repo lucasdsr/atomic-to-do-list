@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Box, Button, Checkbox } from '@mui/material'
 
@@ -8,10 +8,20 @@ import { Task, useTaskContext } from '@/contexts/tasks'
 import * as S from './styles'
 
 const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
-  const [title, setTTitle] = useState(task.title)
+  const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
 
-  const { toggleTask, deleteTask } = useTaskContext()
+  const { toggleTask, deleteTask, editTask } = useTaskContext()
+
+  const handleTitleChange = (value: string) => {
+    setTitle(value)
+    editTask(task.id, 'title', value)
+  }
+
+  const handleDescriptionChange = (value: string) => {
+    setDescription(value)
+    editTask(task.id, 'description', value)
+  }
 
   return (
     <S.TaskItemContainer elevation={2}>
@@ -21,11 +31,11 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
         onChange={() => toggleTask(task.id)}
       />
       <S.InputRow>
-        <Input placeholder='Title' value={title} onChange={setTTitle} />
+        <Input placeholder='Title' value={title} onChange={handleTitleChange} />
         <Input
           value={description}
           placeholder='Description'
-          onChange={setDescription}
+          onChange={handleDescriptionChange}
         />
       </S.InputRow>
       <S.Close onClick={() => deleteTask(task.id)} />

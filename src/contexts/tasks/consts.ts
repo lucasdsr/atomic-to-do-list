@@ -16,3 +16,5 @@ export const emptyTask = {
   description: '',
   completed: false,
 }
+
+export const LOCAL_STORAGE_LISTS_KEY = '__TODO_LISTS'
