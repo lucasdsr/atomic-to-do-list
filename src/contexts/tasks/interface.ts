@@ -1,5 +1,5 @@
 export type Task = {
-  id: number,
+  id: number
   title: string
   description?: string
   completed: boolean
@@ -13,7 +13,7 @@ export interface UseTaskState {
 
   addTask: VoidFunction
   clearConfirmedTasks: VoidFunction
-  deleteTask: (taskId: number) => void 
+  deleteTask: (taskId: number) => void
   toggleTask: (taskId: number) => void
   editTask: (taskId: number, field: string, value: string) => void
 }

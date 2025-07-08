@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled } from '@mui/material'
 
 export const LoadingContainer = styled(Box)`
   display: flex;

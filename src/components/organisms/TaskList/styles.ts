@@ -1,13 +1,13 @@
-import { Box, Button, Paper, styled, Typography } from "@mui/material";
+import { Box, Button, Paper, styled, Typography } from '@mui/material'
 
 export const Title = styled(Typography)`
   font-weight: 700;
-  color: white
+  color: white;
 `
 
 export const AddButton = styled(Button)`
   width: 100%;
-  background-color: ${({ theme }) => theme.palette.primary.main}
+  background-color: ${({ theme }) => theme.palette.primary.main};
 `
 
 export const TaskListContainer = styled(Paper)(({ theme }) => ({
@@ -21,7 +21,7 @@ export const TaskListContainer = styled(Paper)(({ theme }) => ({
   color: theme.palette.secondary.main,
 
   [theme.breakpoints.down('sm')]: {
-    width: '80vw',
+    width: '80vw'
   }
 }))
 
@@ -37,5 +37,5 @@ export const BoxList = styled(Box)({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  gap: '12px',
+  gap: '12px'
 })

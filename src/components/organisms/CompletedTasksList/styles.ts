@@ -1,4 +1,4 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, styled, Typography } from '@mui/material'
 
 export const CompletedContainer = styled(Box)`
   display: flex;
@@ -18,7 +18,6 @@ export const OpenCompletedRow = styled(Box)`
   width: 100%;
   display: flex;
   justify-content: center;
-
 `
 
 export const BoxList = styled(Box)`

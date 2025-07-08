@@ -1,4 +1,4 @@
-import { TasksList } from "./interface";
+import { TasksList } from './interface'
 
 const noop = () => {}
 
@@ -14,7 +14,7 @@ export const contextDefaultValue = {
 export const emptyTask = {
   title: '',
   description: '',
-  completed: false,
+  completed: false
 }
 
 export const LOCAL_STORAGE_LISTS_KEY = '__TODO_LISTS'

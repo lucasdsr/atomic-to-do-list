@@ -1,12 +1,12 @@
-import { Box, Container, styled, TextField, Typography } from "@mui/material";
+import { Box, Container, styled, TextField, Typography } from '@mui/material'
 
 export const InputContainer = styled(Container)(({ theme }) => ({
   width: '437px',
   padding: '0px 8px !important',
 
   [theme.breakpoints.down('sm')]: {
-    width: '55vw',
-  },
+    width: '55vw'
+  }
 }))
 
 export const InputField = styled(TextField)`
@@ -28,6 +28,6 @@ export const InputText = styled(Typography)(({ theme }) => ({
   overflowX: 'hidden',
 
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '55vw',
-  },
+    maxWidth: '55vw'
+  }
 }))

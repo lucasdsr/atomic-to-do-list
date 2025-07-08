@@ -59,9 +59,8 @@ vi.mock('./styles', () => {
 })
 
 const theme = createTheme()
-const renderWithTheme = (ui: React.ReactElement) => {
-  return render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>)
-}
+const renderWithTheme = (ui: React.ReactElement) =>
+  render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>)
 
 describe('TaskItem Component', () => {
   beforeEach(() => {
