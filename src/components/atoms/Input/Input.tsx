@@ -32,6 +32,7 @@ export const Input = ({ value = '', onChange, placeholder }: InputType) => {
     <S.InputContainer>
       {isEditing ? (
         <S.InputField
+          data-testdd='input-field'
           autoFocus
           variant='standard'
           sx={{
@@ -45,11 +46,23 @@ export const Input = ({ value = '', onChange, placeholder }: InputType) => {
           onChange={handleEditChange}
         />
       ) : (
-        <S.InputBox onBlur={handleEditBlur} onClick={() => setIsEditing(true)}>
+        <S.InputBox
+          data-testdd='input-box'
+          onBlur={handleEditBlur}
+          onClick={() => setIsEditing(true)}
+        >
           {value ? (
-            <S.InputText color={theme.palette.grey[300]}>{value}</S.InputText>
+            <S.InputText
+              data-testdd='input-texxt'
+              color={theme.palette.grey[300]}
+            >
+              {value}
+            </S.InputText>
           ) : (
-            <S.InputText color={theme.palette.grey[600]}>
+            <S.InputText
+              data-testdd='input-text'
+              color={theme.palette.grey[600]}
+            >
               {placeholder}
             </S.InputText>
           )}

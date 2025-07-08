@@ -6,7 +6,6 @@ import { Input } from '@/components/atoms'
 import { Task, useTaskContext } from '@/contexts/tasks'
 
 import * as S from './styles'
-import CompletedTasksList from '@/components/organisms/CompletedTasksList/CompletedTasksList'
 
 const TaskItem: React.FC<{ task: Task; isVisible?: boolean }> = ({
   task,
@@ -36,23 +35,31 @@ const TaskItem: React.FC<{ task: Task; isVisible?: boolean }> = ({
 
   return (
     <S.TaskItemContainer
-      isVisible={isVisible && isVisibleOutside}
       elevation={2}
+      data-testid='task-item-container'
+      isVisible={isVisible && isVisibleOutside}
     >
       <Checkbox
+        aria-label={`Task ${task.id}`}
         id={task.id.toString()}
         checked={task.completed}
         onChange={() => toggleTask(task.id)}
       />
       <S.InputRow>
-        <Input placeholder='Title' value={title} onChange={handleTitleChange} />
+        <Input
+          value={title}
+          placeholder='Title'
+          onChange={handleTitleChange}
+          data-testid='task-title-input'
+        />
         <Input
           value={description}
           placeholder='Description'
+          data-testid='task-description-input'
           onChange={handleDescriptionChange}
         />
       </S.InputRow>
-      <S.Close onClick={handleDelete} />
+      <S.Close data-testid='delete-button' onClick={handleDelete} />
     </S.TaskItemContainer>
   )
 }
