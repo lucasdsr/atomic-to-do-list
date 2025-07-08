@@ -1,4 +1,4 @@
-import { TasksList } from '@/contexts/tasks'
+import { TasksList } from '@/contexts/tasksList'
 
 export type TaskListProps = {
   list: TasksList

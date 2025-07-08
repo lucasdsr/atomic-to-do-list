@@ -7,7 +7,7 @@ export type Task = {
 
 export type TasksList = Task[]
 
-export interface UseTaskState {
+export interface UseTaskListState {
   tasksList: TasksList
   completedTasks: TasksList
 

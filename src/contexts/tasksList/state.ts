@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { emptyTask, LOCAL_STORAGE_LISTS_KEY } from './consts'
-import { TasksList, UseTaskState } from './interface'
+import { TasksList, UseTaskListState } from './interface'
 import {
   getFromLocalStorage,
   saveToLocalStorage
 } from '@/utils/manageLocalStorage'
 
-export const useTaskState = (): UseTaskState => {
+export const useTaskListState = (): UseTaskListState => {
   const storagedList =
     getFromLocalStorage<TasksList>(LOCAL_STORAGE_LISTS_KEY) || []
   const [allTasks, setAllTasks] = useState<TasksList>(storagedList)
