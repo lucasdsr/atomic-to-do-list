@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { Box, Button, Checkbox } from '@mui/material'
+import { Checkbox } from '@mui/material'
 
 import { Input } from '@/components/atoms'
 import { Task, useTaskContext } from '@/contexts/tasks'

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import * as S from './styles'
-import { Typography, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
 
 type InputType = {
   value?: string
