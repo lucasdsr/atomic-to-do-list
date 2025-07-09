@@ -1,7 +1,8 @@
-import { useContext } from 'react'
+import { createContext, useContext } from 'react'
 
-import { Context } from './component'
 import { UseTaskListState } from './interface'
+
+export const Context = createContext<UseTaskListState | null>(null)
 
 export const useTaskContext = (): UseTaskListState => {
   const value = useContext(Context)

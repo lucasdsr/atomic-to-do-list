@@ -17,4 +17,4 @@ export const emptyTask = {
   completed: false
 }
 
-export const LOCAL_STORAGE_LISTS_KEY = '__TODO_LISTS'
+export const LOCAL_STORAGE_LISTS_KEY = '__TASK_LIST'
