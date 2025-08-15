@@ -7,6 +7,11 @@ export const useManageListState = (): UseManageListState => {
   const [listOfLists, setListOfLists] = useState<ListOfListsStructure[]>([])
   const [nextListId, setNextListId] = useState<number>(listOfLists.length + 1)
 
+  const getListsHead = (): return =>
+    listOfLists.map(({ name }) => ({
+      name
+    }))
+
   const createList = (name: string) => {
     setListOfLists(curr => [
       ...curr,
@@ -22,6 +27,7 @@ export const useManageListState = (): UseManageListState => {
     listOfLists,
 
     createList,
-    deleteList
+    deleteList,
+    getListsHead
   }
 }

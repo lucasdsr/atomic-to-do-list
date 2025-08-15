@@ -9,6 +9,7 @@ export type ListOfListsStructure = {
 export interface UseManageListState {
   listOfLists: ListOfListsStructure[]
 
-  createList: (listName: string) => void
+  getListsHead: () => void
   deleteList: (listId: number) => void
+  createList: (listName: string) => void
 }
